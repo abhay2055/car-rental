@@ -11,19 +11,21 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());  
+// app.use(cors());  
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Server running with ES6 imports...");
 });
 
-
-
-app.use("/api/save", carRoutes);
+app.use("/api/cars", carRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api", carRoutes);
-app.use("/only/get", carRoutes);
 
 app.use("/uploads", express.static("uploads"));
 
