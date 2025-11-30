@@ -3,7 +3,7 @@ import Car from "../models/Car.js";
 export const uploadImagesLocal = async (req, res) => {
   try {
     const urls = req.files.map((file) => {
-      return `http://localhost:5000/${file.path}`; 
+      return `${process.env.REACT_APP_API_URL}/${file.path}`;
     });
 
     res.json({ urls });
@@ -18,9 +18,8 @@ export const createCar = async (req, res) => {
     const car = await Car.create(req.body);
     res.status(201).json({
       message: "Car added successfully",
-      car
+      car,
     });
-
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Failed to save car" });
