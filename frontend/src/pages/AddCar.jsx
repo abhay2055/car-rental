@@ -29,13 +29,13 @@ export default function AddCar() {
     images.forEach((img) => formData.append("images", img));
 
     const uploadRes = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/cars/upload-car-images`,
+      `https://car-rental-5zqp.onrender.com/api/cars/upload-car-images`,
       {
         method: "POST",
         body: formData,
       }
     );
-    
+
     const token = localStorage.getItem("token");
 
     let ownerId = null;
@@ -57,11 +57,15 @@ export default function AddCar() {
       ownerId: ownerId,
     };
 
-    const res = await fetch("http://localhost:5000/api/cars/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(finalData),
-    });
+    const res = await fetch(
+      `https://car-rental-5zqp.onrender.com/api/cars/create`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(finalData),
+      }
+    );
+
     const data = await res.json();
     console.log("Car saved:", data);
     alert("Car added successfully!");

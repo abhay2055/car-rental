@@ -22,7 +22,7 @@ export default function MyAds() {
       const ownerId = payload.id;
 
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/cars/get/user/${ownerId}`
+        `https://car-rental-5zqp.onrender.com/api/cars/get/user/${ownerId}`
       );
 
       const data = await res.json();

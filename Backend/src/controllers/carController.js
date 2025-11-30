@@ -3,7 +3,7 @@ import Car from "../models/Car.js";
 export const uploadImagesLocal = async (req, res) => {
   try {
     const urls = req.files.map((file) => {
-      return `${process.env.REACT_APP_API_URL}/${file.path}`;
+      return `https://car-rental-5zqp.onrender.com/${file.path}`;
     });
 
     res.json({ urls });
