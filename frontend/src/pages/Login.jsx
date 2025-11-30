@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `$https://car-rental-5zqp.onrender.com/api/auth/login`,
+        `https://car-rental-5zqp.onrender.com/api/auth/login`,
         form
       );
       localStorage.setItem("token", res.data.token);
