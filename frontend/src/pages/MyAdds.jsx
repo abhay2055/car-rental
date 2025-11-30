@@ -22,11 +22,10 @@ export default function MyAds() {
       const ownerId = payload.id;
 
       const res = await fetch(
-        `http://localhost:5000/only/get/car/of/user/${ownerId}`
+        `${process.env.REACT_APP_API_URL}/api/cars/get/user/${ownerId}`
       );
 
       const data = await res.json();
-      console.log('data'    ,data);
       setAds(data.cars || []);
     } catch (err) {
       console.error(err);

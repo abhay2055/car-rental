@@ -29,13 +29,13 @@ export default function AddCar() {
     images.forEach((img) => formData.append("images", img));
 
     const uploadRes = await fetch(
-      "http://localhost:5000/api/upload-car-images",
+      `${process.env.REACT_APP_API_URL}/api/cars/upload-car-images`,
       {
         method: "POST",
         body: formData,
       }
     );
-
+    
     const token = localStorage.getItem("token");
 
     let ownerId = null;
@@ -43,7 +43,7 @@ export default function AddCar() {
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split(".")[1]));
-        ownerId = payload.id; 
+        ownerId = payload.id;
       } catch (error) {
         console.error("Invalid token:", error);
       }
@@ -57,7 +57,7 @@ export default function AddCar() {
       ownerId: ownerId,
     };
 
-    const res = await fetch("http://localhost:5000/api/save/cars", {
+    const res = await fetch("http://localhost:5000/api/cars/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(finalData),
