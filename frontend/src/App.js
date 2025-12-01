@@ -31,6 +31,7 @@ import Home from "./pages/Home";
 import AddCar from "./pages/AddCar";
 import MyAdds from "./pages/MyAdds";
 import Logout from "./pages/Logout";
+import CarCollection from "./pages/AllCarListing";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         />
         <Route path="/add-car" element={<AddCar />} />
         <Route path="/get/user/car" element={<MyAdds />} />
+        <Route path="/cars" element={<CarCollection />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>

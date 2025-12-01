@@ -14,11 +14,11 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auth/login`,
+        `https://car-rental-5zqp.onrender.com/api/auth/login`,
         form
       );
       localStorage.setItem("token", res.data.token);
-      navigate("/feed");
+      navigate("/cars");
     } catch (err) {
       alert(err.response.data.message);
     }

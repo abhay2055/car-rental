@@ -37,3 +37,28 @@ export const getCarsByUser = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+export const getAllCars = async (req, res) => {
+  try {
+    // Query params → page & limit
+    const page = parseInt(req.query.page) || 1;  
+    const limit = 10;                            // 10 per page
+    const skip = (page - 1) * limit;
+
+    const totalCars = await Car.countDocuments();
+    const cars = await Car.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+
+    res.json({
+      success: true,
+      cars,
+      currentPage: page,
+      totalPages: Math.ceil(totalCars / limit),
+      totalCars
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
