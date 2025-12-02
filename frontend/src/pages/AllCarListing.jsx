@@ -13,7 +13,7 @@ export default function CarCollection() {
   const fetchCars = async (pageNumber) => {
     try {
       const res = await fetch(
-        `https://car-rental-5zqp.onrender.com/api/cars/all/list?page=${pageNumber}`
+        `http://localhost:5000/api/cars/all/list?page=${pageNumber}`
       );
       const data = await res.json();
 
@@ -31,7 +31,7 @@ export default function CarCollection() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Car Collection</h1>
+      <h1 className="text-3xl font-bold mb-6">Rent a Car</h1>
 
       {/* Car Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

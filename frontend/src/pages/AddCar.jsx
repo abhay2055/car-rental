@@ -5,7 +5,7 @@ export default function AddCar() {
     brand: "",
     model: "",
     year: "",
-    pricePerDay: "",
+    pricePerDay: "",  
     location: "",
   });
 
@@ -29,7 +29,7 @@ export default function AddCar() {
     images.forEach((img) => formData.append("images", img));
 
     const uploadRes = await fetch(
-      `https://car-rental-5zqp.onrender.com/api/cars/upload-car-images`,
+      `http://localhost:5000/api/cars/upload-car-images`,
       {
         method: "POST",
         body: formData,
@@ -58,7 +58,7 @@ export default function AddCar() {
     };
 
     const res = await fetch(
-      `https://car-rental-5zqp.onrender.com/api/cars/create`,
+      `http://localhost:5000/api/cars/create`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

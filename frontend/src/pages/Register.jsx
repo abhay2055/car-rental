@@ -15,7 +15,7 @@ function Register() {
     try {
 
       const res = await axios.post(
-        `https://car-rental-5zqp.onrender.com/api/auth/register`,
+        `http://localhost:5000/api/auth/register`,
         form
       );
       
